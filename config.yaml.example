@@ -1,0 +1,9 @@
+websocket_url: 'ws://MY_HASS_IP:8123/api/websocket'
+access_token: 'PUT_YOUR_LONG_LIVED_TOKEN_HERE' 
+# Check here on how to get that token:
+# https://developers.home-assistant.io/docs/auth_api/#:~:text=Long%2Dlived%20access%20tokens%20can,access%20token%20for%20current%20user.
+
+devices:
+  - 'aa:bb:cc:dd:ee:ff:00:11'  # device 1
+  - '11:22:33:44:55:66:77:88'  # device 2
+
