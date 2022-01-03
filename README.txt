@@ -9,7 +9,6 @@ cp config.yaml.example config.yaml
 4. edit your config
 4.1 configure your websocket URL
 4.2 obtain and configure your long lived api token
-4.3 configure the devices you want to poll the energy measurings for (you can find the IEEE address on the device page in HA)
 
 5. go!
 python3 PollAttributes.py
