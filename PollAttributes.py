@@ -21,6 +21,9 @@ pprint.pprint(config)
 update_devices_id = None
 devices = []
 
+time_between_devices = config["time_between_devices"]
+time_between_cycles = config["time_between_cycles"]
+
 if not "websocket_url" in config:
     print("ERROR: No websocket_url configured")
     exit()
@@ -100,12 +103,14 @@ async def update_all_energy():
     global devices
     logging.info("updating energies")
     for ieee in devices:
+        logging.info("updating %s" % ieee);
         await update_energy_for(ieee)
+        await asyncio.sleep(time_between_devices)
 
 
 def update_all_energy_tick():
     logging.info("updating energies tick")
-    threading.Timer(60, update_all_energy_tick).start()
+    threading.Timer(time_between_devices * len(devices) + time_between_cycles, update_all_energy_tick).start()
     asyncio.set_event_loop(asyncio.new_event_loop())
     asyncio.get_event_loop().run_until_complete(update_all_energy())
 
